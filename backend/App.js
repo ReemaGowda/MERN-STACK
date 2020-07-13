@@ -14,7 +14,12 @@ const mongoose = require('mongoose')
 
 //CONNECTING OUR APP TO MONGODB DATABASE
 
-mongoose.connect('mongodb://127.0.0.1/videoServer')
+mongoose.connect('mongodb://127.0.0.1/videoServer', {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+mongoose.Promise = global.Promise
 
 
 app.use(morgan('dev'))
