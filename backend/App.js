@@ -9,7 +9,12 @@ const cors = require('cors')
 //extended the json data and make easy to read bodypraser
 const bodyPraser = require('body-parser')
 //mongoose make very easy to connect to mongodb database
- const mongoose = require('mongoose')
+const mongoose = require('mongoose')
+ 
+
+//CONNECTING OUR APP TO MONGODB DATABASE
+
+mongoose.connect('mongodb://127.0.0.1/videoServer')
 
 
 app.use(morgan('dev'))
