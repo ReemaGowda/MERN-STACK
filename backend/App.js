@@ -39,6 +39,8 @@ app.use(bodyPraser.json())
 //SIGNUP ROUTE
 app.use('/api/signup', require('./route/signup'))
 
+//SIGNIN ROUTE
+app.use('/api/signin', require('./route/signin'))
 
 
 
