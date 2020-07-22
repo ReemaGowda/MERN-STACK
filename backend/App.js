@@ -19,6 +19,8 @@ mongoose.connect('mongodb://127.0.0.1/videoServer', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
+// .then(() => console.log( 'Database Connected' ))
+// .catch(err => console.log( err ));
 mongoose.Promise = global.Promise
 
 
@@ -36,10 +38,8 @@ app.use(bodyPraser.json())
 // })
 
 
-//SIGNUP ROUTE
+// ROUTE
 app.use('/api/signup', require('./route/signup'))
-
-//SIGNIN ROUTE
 app.use('/api/signin', require('./route/signin'))
 
 

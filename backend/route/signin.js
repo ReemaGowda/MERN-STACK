@@ -1,21 +1,16 @@
 const express = require('express')
 const router = express.Router();
-const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
-const User = require('../models/user')
+const User = require('../models/User')
 
+console.log("hello")
 
 router.post('/', (req, res, next) => {
-    console.log(req.body)
-    res.status(200).json({
-        message:'inside/post /api/signin'
-    })
-
-        User.find({ email: req.body.email })
+    User.find({ email: req.body.email })
         .exec()
         .then(user => {
             if (user.length < 1) {
-                //user not found 
+                //401 means unauthorized 
                 return res.status(401).json({
                     message: 'Auth Failed'
                 });
@@ -29,22 +24,22 @@ router.post('/', (req, res, next) => {
                 if (result) {
                     //Token send
                     return res.status(200).json({
-                        message : " Auth Sucessfull "
-                    })
+                        message: 'Auth sucessful'
+                    });
                 }
-                 res.status(401).json({
-                    message: "Auth failed"
-                })
-            })
+                res.status(401).json({
+                    message: 'Auth failed'
+                });
+            });
             
         })
         .catch(err => {
             console.log(err)
-             res.status(500).json({
-                error:err
-            })
-})
-})
+            res.status(500).json({
+                error: err
+            });
+        });
+});
 
 
 module.exports = router;

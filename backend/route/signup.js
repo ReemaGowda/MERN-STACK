@@ -1,14 +1,15 @@
 const express = require('express')
 const router = express.Router();
-const mongoose = require('mongoose')
-const User = require('../models/user')
+const User = require('../models/User')
 const bcrypt = require('bcrypt')
+const mongoose = require('mongoose')
 
+console.log("i am sigup")
 
 router.post('/', (req, res, next) => {
     console.log(req.body)
     res.status(200).json({
-         message: 'inside post /api/signup'
+         message: 'inside post /api/signUp'
     })
     //TO CHECK USER EXIST OR NOT BY USING THE EMAIL ID PROVIDED BY USER BODY
     User.find({ email: req.body.email })
